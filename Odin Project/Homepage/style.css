@@ -1,0 +1,198 @@
+@font-face {
+    font-family: Play;
+    src: url(fonts/Play-Regular.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(fonts/Montserrat-Regular.ttf);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Montserrat, serif;
+}
+
+.header {
+    padding: max(20px, 4.17%);
+    min-height: 600px;
+    background: linear-gradient(165deg, #0891b2, #0891b2 15%, rgba(8,145,178,0.5) 25%, rgba(8,145,178,0.5) 35%, #0891b2 45%, #0891b2 65%, #fff 65%, #fff), url(images/cyber-security.jpg) top / contain ;
+}
+
+.header__container {
+    position: relative;
+}
+
+.drakon-img {
+    width: max(280px, 36.36%);
+    position: absolute;
+    top: -150px;
+    border-radius: 5px;
+}
+
+.about {
+    max-width: 1080px;
+    min-height: 400px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px gray;
+    padding: 40px;
+    margin: 150px 0 0 20px; 
+    border-radius: 0 40px 0 0;
+}
+
+.placeholder {
+    float: left;
+    width: max(240px, 37%);
+    opacity: 0;
+    margin-right: 15px;
+}
+
+.intro h2 {
+    font-size: 2.5rem;
+    font-family: Play, serif;
+}
+
+.intro p {
+    line-height: 1.5;
+    margin: 20px 0 45px;
+}
+
+.intro span {
+    opacity: 0;
+}
+    
+.header__social {
+    text-align: end;
+}
+
+.header__social a {
+    margin-left: 15px;
+}
+
+/* ===============MAIN================= */
+
+.main {
+    padding: max(25px, 4.17%);
+}
+
+main h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-family: Play, serif;
+}
+
+.project {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+.project__item {
+    width: 333px;
+    height: 410px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px #0891b2;
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.project__item::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: url(images/project_background.jpg) no-repeat;
+    border-radius: 15px;
+    opacity: 0.2;
+}
+
+.picture {
+    height: 250px;
+}
+
+.picture__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 25px 15px 25px;
+    font-family: Play, serif;
+}
+
+.project__header + p {
+    padding: 0 25px;
+}
+
+.project__link {
+    margin-left: 15px;
+}
+
+/* =================FOOTER================== */
+
+.footer {
+    padding-top: max(20px, 3%);
+    background: linear-gradient(25deg,  #0891b2, #0891b2 25%, rgba(8,145,178,0.5) 45%, rgba(8,145,178,0.5) 55%, #0891b2 75%, #0891b2), url(images/cyber-security.jpg) center / cover ;
+}
+
+.footer__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.contact {
+    color: #fff;
+    text-align: center;
+    width: max(280px, 38.33%);
+    margin: 0 40px;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    font-family: Play, serif;
+}
+
+.contact p {
+    font-size: 1.5rem;
+}
+
+.contact :nth-child(2) {
+    margin: 30px 0;
+}
+
+.contact :nth-child(4) {
+    margin: 30px 0 15px;
+}
+
+.footer__social {
+    margin: 25px 0 30px;
+}
+
+.footer__social a {
+    padding-right: 15px;
+}
+
+.drakon550x350 {
+    max-width: 100%;
+    border-radius: 5px;
+}
