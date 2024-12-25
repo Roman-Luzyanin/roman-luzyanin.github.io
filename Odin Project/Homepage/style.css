@@ -102,7 +102,7 @@ main h2 {
     width: 333px;
     height: 410px;
     border-radius: 15px;
-    box-shadow: 2px 2px 5px #0891b2;
+    box-shadow: 3px 3px 6px #0891b2;
     /* overflow: hidden; */
     position: relative;
 }
