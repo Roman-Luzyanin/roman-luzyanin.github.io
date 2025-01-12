@@ -79,7 +79,7 @@ function playRound(playerSelection) {
 
         if (computerScore === 5) {
             result = 'You LOSE the game!';
-            details = 'The computer will not respect you! Try again!'
+            details = 'Try again!'
             disableButtons()
         }
     }
