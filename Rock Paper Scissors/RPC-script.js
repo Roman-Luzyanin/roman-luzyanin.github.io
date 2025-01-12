@@ -78,7 +78,7 @@ function playRound(playerSelection) {
         details = `${computerSelection} beats ${playerSelection}`;
 
         if (computerScore === 5) {
-            result = 'You LOSE the game!';
+            result = 'You lose the game!';
             details = 'Try again!'
             disableButtons()
         }
