@@ -1,0 +1,231 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    background: no-repeat url(images/library_bg1.png) center / cover;
+    
+}
+
+.library {
+    margin: 100px auto;
+    max-width: 900px;
+    height: 500px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 300px 600px;
+    grid-template-rows: 1fr 1fr;
+}
+
+.card_file {
+    grid-column: 1;
+    grid-row: span 2;
+    border: 1px solid black;
+    padding: 40px 50px;
+    position: relative;
+}
+
+.card_file::before {
+    content: "";
+    width: 300px;
+    height: 498px;
+    background: url(images/bg.jpeg) center / cover;
+    position: absolute;
+    top: 0;
+    left: 0 ;
+    z-index: -1;
+    /* opacity: .8; */
+}
+
+.logo1 {
+    position: absolute;
+    top: -50px;
+    left: 300px;
+}
+
+.logo2 {
+    position: absolute;
+    top: -50px;
+    left: 953px;
+}
+
+.first_letter {
+    font-family: 'Lavishly Yours', serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+::placeholder {
+    color: red;
+}
+
+label {
+    display: inline-block;
+    background: linear-gradient(rgb(255,255,255, 0), rgb(255,255,255) 40%, rgb(255,255,255) 60%, rgb(255,255,255, 0));
+}
+
+label:last-of-type {
+    display: inline-block;
+    margin-left: 12px;
+}
+
+input {
+    display: block;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    outline: none;
+}
+
+input:last-of-type {
+    margin-bottom: 40px;
+}
+
+#read {
+    margin-left: 10px;
+}
+
+.add_book {
+    margin: 40px 0 0 30px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.shelf {
+    position: relative;
+    grid-column: 2;
+    grid-row: span 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 5px 10px;
+    background: url(images/s1.png) no-repeat 0 48.5%, 
+                url(images/s1.png) no-repeat 0 100%,
+                linear-gradient(to right, rgb(48, 45, 45) 3%, rgb(73, 66, 66) 3%, rgb(73, 66, 66) 97%, rgb(48, 45, 45) 97%, rgb(48, 45, 45) 99.9%, black 99.9%);
+    
+}
+
+.shelf::before {
+    content: "";
+    width: 598px;
+    height: 50px;
+    position: absolute;
+    top: 185px;
+    border-bottom: 10px solid #5C584D;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+}
+
+.shelf::after {
+    content: "";
+    width: 598px;
+    height: 50px;
+    position: absolute;
+    top: 435px;
+    border-bottom: 10px solid #5C584D;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+}
+
+.book {
+    border: 1px solid black;
+    height: 228px;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    border-radius: 5px;
+    box-shadow: 2px -1px 0 rgb(190, 174, 174);
+    position: relative;
+}
+
+.book::before {
+    content: "";
+    width: 165px;
+    height: 190px;
+    border: 1px solid black;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 5px;
+    background: url(images/Screenshot\ from\ 2025-02-15\ 01-31-49.png) no-repeat center / cover;
+    z-index: -1;
+}
+
+.book p {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.book p:last-of-type {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.book button:first-of-type {
+    position: absolute;
+    bottom: 2px;
+    left: 28%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+.book button:last-of-type {
+    position: absolute;
+    bottom: 2px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 65px;
+    border-radius: 5px;
+}
+
+.animation {
+    position: absolute;
+    border: 2px solid black;
+    top: -30px;
+    left: 350px;
+    background-color: red;
+    width: 600px;
+    display: flex;
+    overflow: hidden;
+}
+
+.animation p {
+    min-width: 100%;
+    animation: animation 5s linear infinite;
+}
+
+@keyframes animation {
+    0% {
+        transform: translateX(50%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
