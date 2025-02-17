@@ -75,6 +75,7 @@ function putOnTheShelf(myLibrary, book) {
 
     const author = document.createElement('p');
     author.textContent = book.author;
+    author.style.fontSize = '12px';
     newBook.appendChild(author);
 
     const title = document.createElement('p');
