@@ -84,6 +84,7 @@ function putOnTheShelf(myLibrary, book) {
 
     const pages = document.createElement('p');
     pages.textContent = `-${book.pages}-`;
+    pages.style.fontSize = '12px';
     newBook.appendChild(pages);
     
     const removeBook = document.createElement('button');
