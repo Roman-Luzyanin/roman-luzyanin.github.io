@@ -1,0 +1,72 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: serif;
+}
+
+.container {
+    max-width: 454px;
+    margin: 30px auto;
+}
+
+h1,
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    height: 100%;
+}
+
+h2 {
+    height: 30px;
+}
+
+.gameboard {
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.square {
+    max-width: 150px;
+    height: 150px;
+    background-color: linen;
+    border: 2px solid black;
+    text-align: center;
+    line-height: 150px;
+    font-size: 50px;
+}
+
+#newGame {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+dialog {
+    margin: 85px auto;
+}
+
+dialog button {
+    font-size: 20px;
+    width: 72.5px;
+}
+
+form p {
+    margin-bottom: 20px;
+}
+
+form div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+}
+
