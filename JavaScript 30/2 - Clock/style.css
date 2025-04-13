@@ -1,0 +1,189 @@
+body {
+    background: url(Vintage-Colored-Stripes-Abstract-1920x1080.jpg) no-repeat center / cover;
+}
+
+.clock {
+    width: 30rem;
+    height: 30rem;
+    border: 8px solid black;
+    margin: 50px auto;
+    border-radius: 50%;
+    padding: 2rem;
+    box-shadow:
+    0 0 0 5px #EFEFEF,
+    inset 0 0 0 5px #EFEFEF,
+    inset 0 0 30px black;
+    position: relative;
+    background: #fff;
+}
+
+.clock::before {
+    content: "";
+    width: 28rem;
+    height: 28rem;
+    background: url(bg.jpg) no-repeat center / cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: .7;
+}
+
+.clock-face {
+    height: inherit;
+    position: relative;
+}
+
+.hand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0;
+}
+
+.center {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+}
+
+.sec {
+    width: 50%;
+    height: 3px;
+    transform: rotate(-90deg);
+    background-color: red;
+    z-index: 10;
+}
+
+.min {
+    transform: translateY(-4px) rotate(-90deg);
+    height: 3px;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 200px solid black;
+    position: relative;
+    z-index: 11;
+}
+
+.min::after {
+    content: "";
+    width: 130px;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    top: 1px;
+    left: -60%;
+}
+
+.hour {
+    transform: translateY(-21px) rotate(-90deg);
+    height: 3px;
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-left: 150px solid black;
+    position: relative;
+    z-index: 12;
+}
+
+.hour::after {
+    content: "";
+    width: 100px;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    top: 1px;
+    left: -40%;
+}
+
+.numbers {
+    position: relative;
+    font-family: 'Big Shoulders Stencil';
+    font-size: 1.5rem;
+}
+
+.number1 {
+    position: absolute;
+    top: -29.3rem;
+    left: 22.8rem;
+}
+
+.number2 {
+    position: absolute;
+    top: -23.5rem;
+    left: 28rem;
+}
+
+.number3 {
+    position: absolute;
+    top: -15rem;
+    left: 30rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+
+.number4 {
+    position: absolute;
+    top: -8.5rem;
+    left: 28rem;
+}
+
+.number5 {
+    position: absolute;
+    top: -2.7rem;
+    left: 22.7rem;
+}
+
+.number6 {
+    position: absolute;
+    top: -0.7rem;
+    left: 15rem;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}
+
+.number7 {
+    position: absolute;
+    top: -2.7rem;
+    left: 7rem;
+}
+
+.number8 {
+    position: absolute;
+    top: -8.4rem;
+    left: 1.1rem;
+}
+
+.number9 {
+    position: absolute;
+    top: -15rem;
+    left: -0.8rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+
+.number10 {
+    position: absolute;
+    top: -23.5rem;
+    left: 1rem;
+}
+
+.number11 {
+    position: absolute;
+    top: -29.3rem;
+    left: 6.9rem;
+}
+
+.number12 {
+    position: absolute;
+    top: -31.5rem;
+    left: 15rem;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}

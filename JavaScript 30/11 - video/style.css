@@ -1,0 +1,87 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background: url(bg.jpg);
+    margin: 0;
+    padding: 0;
+}
+
+.player {
+    position: relative;
+    box-shadow: 0 0 30px rgba(0,0,0,1);
+    border: 5px solid rgb(97, 76, 76);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.player:hover .controls {
+    transform: translateY(-5px);
+}
+
+video {
+    display: block;
+}
+
+.player:fullscreen video {
+    width: 100%;
+}
+
+.player:fullscreen .controls {
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    row-gap: 5px;
+    flex-wrap: wrap;
+    width: calc(100% - 10px);
+    padding: 0 0 10px 0;
+    margin: 0 5px;
+    transform: translateY(35px);
+    transition: .3s linear;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.playBtn {
+    border: 0;
+    color: white;
+    background: none;
+}
+
+.fullscreen {
+    border: 0;
+    color: white;
+    background: none;
+    font-size: 1.4rem;
+}
+
+.progressBar {
+    height: 10px;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.progress {
+    height: inherit;
+    width: 0%;
+    background: gold;
+    cursor: pointer;
+}
+
+.time {
+    color: #fff;
+    font-size: 14px;
+    vertical-align: bottom;
+    width: 70px;
+    padding: 0 5px;
+    text-align: center;
+}

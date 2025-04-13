@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+</head>
+<body>
+    <h1>Update CSS variables with <span class="h1">JS</span></h1>
+
+    <div class="controls">
+        <label for="spacing">Spacing</label>
+        <input type="range" id="spacing" min="10" max="150" value="10" data-size="px">
+
+        <label for="blur">Blur</label>
+        <input type="range" id="blur" min="0" max="15" value="1" data-size="px">
+
+        <label for="bgcolor">Base-color</label>
+        <input type="color" id="bgcolor" value="gold">
+    </div>
+
+    <img src="City.jpg" alt="">
+
+    <style>
+        :root {
+            --spacing: 10px;
+            --blur: 1px;
+            --bgcolor: gold;
+        }
+
+        .controls {
+            margin: 40px 0;
+        }
+
+        h1 {
+            margin-left: 50px;
+        }
+
+        label {
+            vertical-align: top;
+        }
+
+        input {
+            margin-right: 20px;
+        }
+        
+        img {
+            padding: var(--spacing);
+            background-color: var(--bgcolor);
+            filter: blur(var(--blur));
+        }
+
+        .h1 {
+            color: var(--bgcolor);
+        }
+
+    </style>
+       
+    <script>
+
+         function changeAttr() {
+            const suffix = this.dataset.size || '';
+            document.documentElement.style.setProperty(`--${this.id}`, this.value + suffix);
+            // console.log(this.value);
+        }
+
+        const control = document.querySelectorAll('.controls input');
+        control.forEach(input => input.addEventListener('change', changeAttr));
+        control.forEach(input => input.addEventListener('mousemove', changeAttr));
+
+    </script>
+</body>
+</html>

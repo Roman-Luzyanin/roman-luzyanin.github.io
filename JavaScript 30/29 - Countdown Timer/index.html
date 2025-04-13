@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+</head>
+<body>
+    <style>
+        *, *::after, *::before {box-sizing: border-box; margin: 0;}
+
+        .countdown-timer {
+            max-width: 650px;
+            height: 450px;
+            border: 1px solid black;
+            margin: 75px auto;
+            border-radius: 15px;
+            
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+          
+        }
+
+        button {
+            padding: 10px;
+        }
+
+        input {
+            height: 40px;
+            text-align: center;
+            outline: 0;
+            background: url(bg.png) no-repeat 100% 10%;
+            font-size: 20px;
+        }
+
+        .display {
+            max-width: 500px;
+            height: 350px;
+            border: 1px solid black;
+            margin: 25px auto;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .display::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: url(bg.png) no-repeat center / cover;
+            opacity: .3;
+            z-index: -1;
+        }
+
+        .displayTimer {
+            font-size: 100px;
+        }
+
+        .displayEnd {
+            font-size: 40px;
+        }
+    </style>
+    <div class="countdown-timer">
+        <div class="controls">
+            <button data-sec="600">Quick - 10min</button>
+            <button data-sec="1200">Snack - 20min</button>
+            <button data-sec="3600">Lunch break - 1hour</button>
+            <form name="form" class="form">
+                <input type="text" name="minutes" placeholder="Custom break...">
+            </form>
+        </div>
+        <div class="display">
+            <h1 class="displayTimer"></h1>
+            <p class="displayEnd"></p>
+        </div>
+    </div>
+    <script>
+        let countdown;
+        const displayTimer = document.querySelector('.displayTimer');
+        const displayEnd = document.querySelector('.displayEnd');
+        const buttons = document.querySelectorAll('[data-sec]');
+
+        function timer(seconds) {
+            clearInterval(countdown);
+            const then = Date.now() + seconds * 1000;
+            displayCountdown(seconds);
+            displayEndTime(then);
+
+            countdown = setInterval(()=> {
+                const secondsLeft = Math.floor((then - Date.now()) / 1000);
+                if (secondsLeft < 0) {
+                    clearInterval(countdown);
+                    return;
+                }
+                displayCountdown(secondsLeft);
+            }, 1000)
+        }
+
+        function displayCountdown(seconds) {
+            const min = Math.floor(seconds / 60);
+            const sec = seconds % 60;
+            displayTimer.textContent = `${min} : ${sec < 10 ? 0 : ''}${sec}`
+        }
+
+        function displayEndTime(time) {
+            const end = new Date(time);
+            const hour = end.getHours();
+            const min = end.getMinutes();
+
+            displayEnd.innerHTML = `Be back at <span style="color: darkRed; font-size: 50px">${hour} : ${min < 10 ? 0 : ''}${min}</span>`;
+        }
+
+        buttons.forEach(button => button.addEventListener('click', function() {
+            const seconds = parseInt(this.dataset.sec);
+            timer(seconds);
+        }))
+
+        window.form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const seconds = this.minutes.value;
+            timer(seconds * 60);
+            this.reset();
+        })
+    </script>
+</body>
+</html>

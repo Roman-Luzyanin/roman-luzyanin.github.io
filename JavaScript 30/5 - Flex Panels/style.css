@@ -1,0 +1,59 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 20px;
+}
+
+.panels {
+    min-height: 100vh;
+    display: flex;
+}
+
+.panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: .5s;
+}
+
+.panel > * {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    transition: .5s;
+}
+
+.bg1 {background: url(images/123\(1\).png) no-repeat 45% center / cover}
+.bg2 {background: url(images/2.jpg) no-repeat 50% center / cover}
+.bg3 {background: url(images/1.jpg) no-repeat 40% center / cover}
+.bg4 {background: url(images/4.png) no-repeat 55% center / cover}
+.bg5 {background: url(images/5.jpeg) no-repeat 55% center / cover}
+
+.panel.open {
+    font-size: 40px;
+    flex: 5;
+}
+
+.panel > *:first-child {
+    transform: translateY(-100%);
+}
+
+.panel.active > *:first-child {
+    transform: translateY(0);
+}
+
+.panel > *:last-child {
+    transform: translateY(100%);
+}
+
+.panel.active > *:last-child {
+    transform: translateY(0);
+}

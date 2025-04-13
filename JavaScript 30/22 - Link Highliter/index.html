@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Follow Along Nav</title>
+</head>
+<body>
+
+    <style>
+        *, *::after, *::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+           min-height: 100vh;
+           background: linear-gradient(rgba(255,255,255), rgba(255,255,255,0),rgba(255,255,255));
+            position: relative;
+
+        }
+
+        body::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: url(bg.jpg) no-repeat center / cover;
+          opacity: .5;
+          z-index: -1;
+        }
+
+        .wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 2;
+            color: black;
+            position: relative;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            padding: 50px 0 75px;
+            list-style: none;
+            font-size: 20px;
+        }
+
+        .menu a {
+            padding: 5px;
+            margin: 0 20px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .highlight {
+            transition: .2s;
+            background-color: rgba(255,0,0,.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 20px;
+            
+           
+        }
+    </style>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Order Status</a></li>
+        <li><a href="">Tweets</a></li>
+        <li><a href="">Read Our History</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrapper">
+      <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
+      <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a> cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
+      <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a> ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
+      <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut consequatur eveniet sunt quam provident sapiente dicta neque quod.</p>
+      <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
+    </div>
+
+  <script>
+    const links = document.querySelectorAll('a');
+    const highlight = document.createElement('span');
+    highlight.classList.add('highlight');
+    document.body.appendChild(highlight);
+
+    function highlightLink() {
+      // this.classList.add('highlight');
+
+        const coordinate = this.getBoundingClientRect();
+        // console.log(coordinate)
+        const coord = {
+            width: coordinate.width,
+            height: coordinate.height,
+            left: coordinate.x + window.scrollX,
+            top: coordinate.y + window.scrollY,
+        }
+        
+        highlight.style.width = `${coord.width}px`;
+        highlight.style.height = `${coord.height}px`;
+        highlight.style.transform = `translate(${coord.left}px, ${coord.top}px)`;
+    }
+
+    // function remove() {
+    //   this.classList.remove('highlight')
+    // }
+
+    links.forEach(a => a.addEventListener('mouseenter', highlightLink));
+    // links.forEach(a => a.addEventListener('mouseleave', remove));
+  </script>
+</body>
+</html>

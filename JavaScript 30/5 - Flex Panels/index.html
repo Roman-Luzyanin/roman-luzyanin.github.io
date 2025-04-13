@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Flex Panels</title>
+</head>
+<body>
+    <div class="panels">
+        <div class="panel bg1">
+            <p>Hey</p>
+            <p>Let's</p>
+            <p>Dance</p>
+        </div>
+        <div class="panel bg2">
+            <p>Give</p>
+            <p>Take</p>
+            <p>Receive</p>
+        </div>
+        <div class="panel bg3">
+            <p>Experience</p>
+            <p>It</p>
+            <p>Today</p>
+        </div>
+        <div class="panel bg4">
+            <p>Give</p>
+            <p>All</p>
+            <p>You can</p>
+        </div>
+        <div class="panel bg5">
+            <p>Life</p>
+            <p>In</p>
+            <p>Motion</p>
+        </div>
+    </div>
+
+    <script>
+        const panels = document.querySelectorAll('.panel');
+
+        function toggle() {
+            if (this.classList.contains('open', 'active')) return this.classList.remove('open', 'active');
+            panels.forEach(panel => panel.classList.remove('open', 'active'));
+            this.classList.add('open', 'active');
+        }
+
+        panels.forEach(panel => panel.addEventListener('click', toggle));
+    </script>
+</body>
+</html>

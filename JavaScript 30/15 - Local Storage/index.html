@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Menu</h2>
+        <button class="clear">clear</button>
+        <ul>
+            <li>
+                <input type="checkbox" id="checkAll">
+                <label for="checkAll">I want All</label>
+            </li>
+        </ul>
+        <ul class="plates">
+            <li>Dishes...</li>
+        </ul>
+        <form class="add-items">
+            <input type="text" name="item" placeholder="What you want?" required>
+            <input type="submit" value="Add item">
+        </form>
+    </div>
+
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url(oh-la-la.jpeg);
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        #checkAll + label {
+            border-bottom: 1px solid black;
+        }
+
+        input[type="text"] {
+            outline: 0;
+        }
+
+        .wrapper {
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 10px rgba(0,0,0,0.3);
+            position: absolute;
+            top: 75px;
+            right: 200px;
+            padding: 20px;
+        }
+
+        .clear {
+           position: absolute;
+           top: 45px;
+           right: 47px;
+        }
+
+    </style>
+
+    <script>
+        const addItems = document.querySelector('.add-items');
+        const itemsList = document.querySelector('.plates');
+        const items = JSON.parse(localStorage.getItem('items')) || [];
+        const checkAll = document.querySelector('#checkAll');
+        const clear = document.querySelector('.clear');
+      
+        function addItem(e) {
+            e.preventDefault();
+            const text = (this.querySelector('[name = item]')).value;
+            
+            const item = {
+                text,
+                done: false,
+            }
+            items.push(item);
+            
+            localStorage.setItem('items', JSON.stringify(items));
+            populateList();
+            this.reset();
+        }
+
+        function populateList() {
+            itemsList.innerHTML = items.map((item, i) => {
+                return `
+                    <li>
+                        <input type="checkbox" id="item${i}" data-index=${i} ${item.done ? 'checked' : ''} >
+                        <label for="item${i}">${item.text}</label>
+                    </li>    
+                `
+            }).join('');
+        }
+
+        function toggleStatus(e) {
+            if (!e.target.matches('input')) return;
+            const index = e.target.dataset.index;
+            items[index].done = !items[index].done;
+            localStorage.setItem('items', JSON.stringify(items));
+        }
+
+        addItems.addEventListener('submit', addItem);
+        itemsList.addEventListener('click', toggleStatus);
+        
+        checkAll.addEventListener('change', () => {
+            const checkboxes = itemsList.querySelectorAll('[type=checkbox]');
+            checkboxes.forEach(checkbox => {
+                const index = checkbox.dataset.index;
+
+                if (checkAll.checked) {
+                items[index].done = true;
+                checkbox.checked = true;
+                } else {
+                items[index].done = false;
+                checkbox.checked = false;
+                }
+            localStorage.setItem('items', JSON.stringify(items));
+        })});
+
+        clear.addEventListener('click', () => {
+            itemsList.innerHTML = '';
+            items.length = 0;
+            checkAll.checked = false;
+            localStorage.setItem('items', JSON.stringify(items));
+        })
+
+        populateList();
+    </script>
+</body>
+</html>

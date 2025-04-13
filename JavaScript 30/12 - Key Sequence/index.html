@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Sequence</title>
+</head>
+<body>
+    <script>
+        const arr = [];
+        const keyWord = 'Sekiro';
+
+        window.addEventListener('keydown', (e) => {
+            console.log(e.key);
+            arr.push(e.key);
+        
+            arr.splice(-keyWord.length - 1, arr.length - keyWord.length);
+            console.log(arr);
+        });
+    </script>
+</body>
+</html>

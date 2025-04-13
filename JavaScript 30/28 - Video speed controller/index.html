@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video speed controller</title>
+</head>
+<body>
+    <style>
+
+        * {box-sizing: border-box}
+
+        .display {
+            margin: 10px;
+            width: 640px;
+        }
+
+        .speed-bar {
+            width: 560px;
+            height: 50px;
+            border: 3px solid black;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .progress {
+            height: inherit;
+            width: 50px;
+            background-color: rgb(99, 197, 99);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            
+        }
+
+        .speed-bar::after {
+            content: attr(data-index);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+    </style>
+    <div class="display">
+        <video src="video.mp4" controls></video>
+        <div class="speed-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+    <script>
+        const speedBar = document.querySelector('.speed-bar');
+        const progress = document.querySelector('.progress');
+        const video = document.querySelector('video');
+        let isDown = false;
+
+        function speed(e) {
+            const x = e.pageX - this.offsetLeft;
+            if (!isDown || x > this.offsetWidth || x < 0) return;
+            const percentage = x / this.offsetWidth;
+            const min = 0.4;
+            const max = 4;
+            const playbackRate = percentage * (max - min) + min;
+            progress.style.width = `${Math.round(percentage * 100)}%`;
+            this.setAttribute('data-index', `${playbackRate.toFixed(2) + 'x'}`)
+            video.playbackRate = playbackRate;
+        }
+
+        speedBar.addEventListener('mousedown', ()=> isDown = true);
+        speedBar.addEventListener('mouseup', ()=> isDown = false);
+        speedBar.addEventListener('mouseenter', ()=> isDown = false);
+        speedBar.addEventListener('mousemove', speed);
+    </script>
+</body>
+</html>

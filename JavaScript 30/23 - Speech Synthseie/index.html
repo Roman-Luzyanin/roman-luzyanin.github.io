@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Lavishly+Yours&display=swap" rel="stylesheet">
+    <title>Speech Synthesis</title>
+</head>
+<body>
+    <style>
+        *, *::after, *::before {box-sizing: border-box;}
+
+        .speech-synthesis {
+            max-width: 500px;
+            margin: 100px auto;
+            background-color: gold;
+            border-radius: 15px;
+            text-align: center;
+            padding: 1px 0 25px;
+            box-shadow: 0 0 50px gold;
+        }
+
+        h1 {
+            font-family: 'Lavishly Yours', serif;
+        }
+
+        .speech-synthesis select,
+        .speech-synthesis textarea {
+            display: block;
+            width: 60%;
+            margin: 0 auto 30px;
+            border: 0;
+            outline: 0;
+            background: rgb(233, 231, 219);
+            border-radius: 15px;
+            padding: 5px;
+            resize: none;
+        }
+
+        .buttons {
+           display: flex;
+           justify-content: center;
+           column-gap: 50px;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-family: 'Big Shoulders Stencil', serif;
+            letter-spacing: 1px;
+        }
+    </style>
+
+    <div class="speech-synthesis">
+
+        <h1>Speech Synthesis</h1>
+
+        <select name="voice">
+            <option value="">Select a voice</option>
+        </select>
+
+        <textarea name="text" rows="6">I love JavaScript!</textarea>
+
+        <div class="buttons">
+            <button id="stop">Stop</button>
+            <button id="speak">Speak</button>
+        </div>
+    </div>
+
+    <script>
+        const msg = new SpeechSynthesisUtterance();
+        const voices = speechSynthesis.getVoices();
+        const select = document.querySelector('[name=voice]');
+        const textarea = document.querySelector('[name=text]');
+        const stop = document.querySelector('#stop');
+        const speak = document.querySelector('#speak');
+        msg.text = textarea.value
+        
+        select.innerHTML = voices
+            .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})<option>`)
+            .join('')
+
+        function setVoice() {
+            msg.voice = voices.find(voice => voice.name === this.value); 
+            toggle();
+        }
+
+        function toggle(speech) {
+            speechSynthesis.cancel();
+            if (speech) {
+                speechSynthesis.speak(msg);
+            }
+        }
+
+        textarea.addEventListener('change', ()=> msg.text = textarea.value);
+        select.addEventListener('change', setVoice);
+        stop.addEventListener('click', ()=> toggle(false));
+        speak.addEventListener('click', toggle);
+    </script>
+</body>
+</html>

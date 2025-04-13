@@ -1,0 +1,51 @@
+.hl {
+    background-color: gold;
+}
+
+body {
+    background-color: lightgray;
+}
+
+.info {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.info li {
+    margin-left: 7px;
+    padding: 10px;
+    background-color: linen;
+    box-shadow: 0 0 5px  black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info li:first-child {
+    margin-top: 3px;
+}
+
+.info li:nth-child(even) {
+    transform: perspective(100px) rotateX(3deg) ;
+   
+}
+
+.info li:nth-child(odd) {
+    transform: perspective(100px) rotateX(-3deg);
+ 
+}
+
+input {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    border: 2px solid red;
+    outline: 0;
+    font-size: 24px;
+}
+
+.form {
+    width: 250px;
+    margin: auto;
+}

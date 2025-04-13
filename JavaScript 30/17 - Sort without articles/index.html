@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort without articles</title>
+</head>
+<body>
+    <style>
+        body {
+            background: url(stadium.jpg) no-repeat center / cover;
+            height: 100vh;
+            position: relative;
+        }
+
+        .bands {
+            min-width: 350px;
+            background-color: wheat;
+            font-size: 20px;
+            list-style: inside square;
+            position: absolute;
+            left: 5%;
+            border-radius: 10px;
+            box-shadow: 0 0 30px  rgba(0,0,0);
+        }
+
+        .bands li {
+            padding: 10px 0;
+            border-bottom: 1px solid black;
+            text-shadow: 1px 1px 1px red;
+        }
+
+        .bands li:last-child {
+            border-bottom: 0;
+        }
+
+    </style>
+
+    <ul class="bands"></ul>
+
+    <script>
+        const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+        const list = document.querySelector('.bands');
+
+        function trim(name) {
+            return name.replace(/^(a |the |an )/i, '');
+        }
+
+        const sortedBands = bands.sort((a,b) => trim(a) > trim(b) ? 1 : -1);
+       
+        list.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkboxes</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: gold;
+        }
+        
+        .inbox {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: linen;
+            border-radius: 5px;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, .1);
+        }
+
+        .item {
+            display: flex;
+            border-bottom: 1px solid gray;
+            align-items: center;
+        }
+
+        .item:last-child {
+            border-bottom: 0;
+        }
+
+        p {
+            border-left: 1px solid gray;
+            padding: 20px;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        input[type="checkbox"] {
+            margin: 20px;
+        }
+
+        input:checked + p {
+            text-decoration: line-through;
+        }
+
+    </style>
+
+    <div class="inbox">
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Some simple text</p>
+        </div>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let firstCheck;
+
+        function handleClick(e) {
+            firstCheck = this;
+            let inBetween = false;
+
+            if (e.shiftKey && this.checked) {
+                checkboxes.forEach(checkbox => {
+                   
+                    if (checkbox === firstCheck || checkbox === this) {
+                        inBetween = !inBetween;
+                    }
+                    if (inBetween) {
+                        checkbox.checked = true;
+                    }
+                })
+            }
+            
+        }
+
+        checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleClick));
+    </script>
+    
+</body>
+</html>

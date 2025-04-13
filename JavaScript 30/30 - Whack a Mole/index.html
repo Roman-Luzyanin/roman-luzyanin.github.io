@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack a Mole</title>
+</head>
+<body>
+    <style>
+        *,*::after,*::before {box-sizing: border-box; margin: 0;}
+
+        body {
+            height: 600px;
+            background: url(bg-2.jpg) 58% 0 / 70%;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 70px;
+            background-color: rgb(150, 150, 255);
+        }
+
+        .menu p {
+            font-size: 24px;
+        }
+
+        button {
+            width: 100px;
+            font-size: 20px;
+        }
+
+        select {
+            width: 170px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .result {
+            color: red;
+            display: inline-block;
+            width: 30px;
+        }
+
+        .best-result {
+            color: yellow;
+            display: inline-block;
+            width: 30px;
+        }
+
+        .game {
+            max-width: 800px;
+            height: 600px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            border: 10px ridge rgb(102, 69, 37);
+            background-color: rgb(118, 87, 29);
+            margin-top: 10px;
+        }
+
+        .hole {
+            flex: 1 0 25%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hole::after {
+            content: "";
+            width: 100%;
+            height: 70px;
+            background: url(dirt.svg) no-repeat 0 0 / 100%;
+            position: absolute; 
+            bottom: -3px;
+        }
+
+        .mole {
+            background: url(mole.svg) no-repeat center / 100%;
+            width: 90px;
+            height: 66%;
+            position: relative;
+            top: 80%;
+            left: 30%;
+            transition: top .2s linear;
+        }
+
+        .up {
+            top: 35%;
+        }
+    </style>
+    <div class="menu">
+        <select name="level" class="level">
+            <option value='{"min":600,"max":1200}'>normal</option>
+            <option value='{"min":400,"max":800}'>hard</option>
+            <option value='{"min":200,"max":400}'>incredible</option>
+        </select>
+        <button>Start!</button>
+        <h1>Whack a Mole!</h1>
+        <p>Score: <span class="result">0</span></p> 
+        <p>Best score: <span class="best-result">0</span></p>
+    </div>
+    
+    <div class="game">
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+        <div class="hole">
+            <div class="mole"></div>
+        </div>
+    </div>
+
+    <script>
+        const startBtn = document.querySelector('button');
+        const moles = document.querySelectorAll('.mole');
+        const result = document.querySelector('.result');
+        const bestResult = document.querySelector('.best-result');
+        bestResult.textContent = localStorage.getItem('bestResult') || '0';
+        const select = document.querySelector('.level');
+
+        let timeUp = false;
+        let score = 0;
+        let lastIdx;
+
+        function randomTime(min, max) {
+            return Math.round(Math.random() * (max - min) + min);
+        }
+
+        function randomHole(moles) {
+            const level = JSON.parse(select.value);
+            const idx = Math.floor(Math.random() * moles.length);
+
+            if (lastIdx === idx) return randomHole(moles);
+            lastIdx = idx;
+            const mole = moles[idx]; 
+            mole.classList.add('up');
+            
+            setTimeout(()=> {
+                mole.classList.remove('up');
+                if (!timeUp) randomHole(moles);
+            }, randomTime(level.min, level.max)) 
+        }
+
+        function startTheGame() {
+            score = 0;
+            result.textContent = 0;
+            timeUp = false;
+            randomHole(moles);
+
+            setTimeout(()=> timeUp = true, 15000);
+            setTimeout(()=> {
+                if (+bestResult.textContent < score) bestResult.textContent = score;
+                localStorage.setItem('bestResult', bestResult.textContent);
+            }, 17000);
+        }
+        
+        moles.forEach(mole => mole.addEventListener('click', function() {
+            score++;
+            result.textContent = score;
+            this.classList.remove('up');
+        }))
+        
+        startBtn.addEventListener('click', startTheGame);
+    </script>
+</body>
+</html>
