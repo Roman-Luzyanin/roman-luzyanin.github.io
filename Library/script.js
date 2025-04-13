@@ -16,13 +16,13 @@ const addBook = document.querySelector('.add_book');
 addBook.addEventListener('click', ()=> {
     // e.preventDefault();
     
-    if (authorInput.value === "") authorInput.placeholder = "requred author";
+    if (authorInput.value === "") authorInput.placeholder = "required author";
     const author = authorInput.value;
 
-    if (titleInput.value === "") titleInput.placeholder = "requred title";
+    if (titleInput.value === "") titleInput.placeholder = "required title";
     const title = titleInput.value;
 
-    if (pagesInput.value === "") pagesInput.placeholder = "requred number";
+    if (pagesInput.value === "") pagesInput.placeholder = "required number";
     const pages = pagesInput.value;
 
     const read = readInput.value;
