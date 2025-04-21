@@ -1,0 +1,135 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.cell {
+    border: 1px solid gray;
+}
+
+.container {
+    width: 502px;
+    height: 502px;
+    display: grid;
+    margin: 22px auto;
+}
+
+.wrapper-left {
+    max-width: 900px;
+    height: 800px;
+    background: url(bg.png) no-repeat 50% 100% / 100%;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px 0;
+    background: url(snake.png) no-repeat 0 60% / cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 50px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    column-gap: 40px;
+}
+
+select,
+.start {
+    border: 2px outset black;
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.start {
+    font-size: 30px;
+}
+
+.start:active {
+    transform: scale(.9);
+}
+
+.face {
+    position: relative;
+}
+
+.face::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(eyes.png) no-repeat center/contain;
+}
+
+.apple {
+    position: relative;
+}
+
+.apple::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(Apple-bg.png) no-repeat center/contain;
+}
+
+.wrapper-right {
+    position: absolute;
+    top: 0;
+    left: 750px;
+    width: 600px;
+    height: 600px;
+    background: url(score.png) no-repeat top/contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score {
+    height: 300px;
+}
+
+.score p {
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.current-score {
+    margin-bottom: 80px;
+}
+
+dialog {
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+    background: url(bg.png) no-repeat 50% 36% / 145%;
+    position: absolute;
+    top: 250px;
+    left: 250px;
+}
+
+dialog p {
+    text-align: center;
+    font-size: 40px;
+    margin: 50px 0;
+    font-weight: 700;
+    color: orange;
+    text-shadow: 3px 3px 0 red;
+}
+
+dialog button {
+    display: block;
+    margin: auto;
+    font-size: 20px;
+    border: 1px solid red;
+    background-color: gold;
+    border-radius: 10px;
+}
+
+dialog button:hover {
+    background-color: rgb(92, 168, 92);
+    cursor: pointer;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Snake game</title>
+</head>
+<body>
+    <dialog>
+        <form>
+            <p>GAME OVER</p>
+            <button class="closeModal">start = new Game()</button>
+        </form>
+    </dialog>
+
+    <div class="wrapper-left">
+        <h1>Snake Game</h1>
+        <div class="controls">
+            <select class="grid" autocomplete="off">
+                <option value="" selected>Choose grid</option>
+                <option value="10">&ensp;&ensp;&ensp;10x10</option>
+                <option value="15">&ensp;&ensp;&ensp;15x15</option>
+                <option value="20">&ensp;&ensp;&ensp;20x20</option>
+            </select>
+
+            <button class="start">Start!</button>
+
+            <select class="speedChoice" autocomplete="off">
+                <option value="" selected>Speed</option>
+                <option value="1">&ensp;walk</option>
+                <option value="2">&nbsp;&nbsp;&nbsp;run</option>
+                <option value="3">&ensp;drive</option>
+            </select>
+        </div>
+        
+        <div class="container"></div>
+    </div>
+
+    <div class="wrapper-right">
+        <div class="score">
+            <p>Your Score:</p>
+            <p class="current-score" style="color: green;"></p>
+            <p>Best Score:</p>
+            <p class="best-score" style="color: darkgoldenrod;"></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
